@@ -1,4 +1,4 @@
-package service
+package mongoservice
 
 import (
 	"context"
@@ -24,6 +24,7 @@ func Connect(ctx context.Context) *MongoService {
 	once.Do(func() {
 
 		uri := viper.GetString("MONGO_URI")
+
 		opts := options.Client().ApplyURI(uri)
 		client, err := mongo.Connect(ctx, opts)
 		if err != nil {
